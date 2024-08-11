@@ -78,12 +78,18 @@ public:
 	template<typename TData>
 	__interface IDeepCheckable {
 public:
-	virtual size_t Deep() const = 0;
+	virtual size_t Depth() const = 0;
 	};
 
 	template<typename TData>
 	__interface IEmptyCheckable {
 public:
 	virtual bool IsEmpty() const = 0;
+	};
+
+	template<typename TData>
+	__interface IHashable {
+public:
+	virtual unsigned int GetHash(TData input) const = 0;
 	};
 }

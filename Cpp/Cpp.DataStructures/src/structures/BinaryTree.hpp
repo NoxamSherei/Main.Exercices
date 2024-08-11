@@ -16,7 +16,9 @@ namespace DataStructures {
 		void Push(int input);
 		int Top() const;
 		bool Contain(int input);
-		size_t Deep() const;
+		size_t Depth() const;
+		size_t DFSDepth() const;
+		size_t BFSDepth() const;
 		size_t Count() const;
 		std::string Print() const;
 		bool IsEmpty() const;
