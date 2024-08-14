@@ -65,17 +65,17 @@ int main() {
 	Console::WriteLine(tree.DFSDepth());
 	Console::WriteLine(tree.BFSDepth());
 	DataStructures::ChainedHashTable table;
-	std::string tekst = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-	std::vector<std::string> slowa;
-	std::stringstream ss(tekst);
-	std::string slowo;
+	std::string sentence = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+	std::vector<std::string> wordCollection;
+	std::stringstream ss(sentence);
+	std::string word;
 
-	while (ss >> slowo) {
-		slowa.push_back(slowo);
+	while (ss >> word) {
+		wordCollection.push_back(word);
 	}
 
 	// Wyœwietlanie wyników
-	for (const auto& s : slowa) {
+	for (const auto& s : wordCollection) {
 		table.Push(s);
 	}
 	Console::WriteLine(table.Print());

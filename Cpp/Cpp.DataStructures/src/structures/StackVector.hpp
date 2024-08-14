@@ -18,6 +18,9 @@ namespace DataStructures {
 		}
 
 		TData Top() const {
+			if (IsEmpty()) {
+				return TData();
+			}
 			return dataHolder.back();
 		}
 

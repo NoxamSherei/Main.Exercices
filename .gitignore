@@ -11,3 +11,5 @@
 /C#/C#.DataStructures/obj
 /Cpp/Cpp.DataStructures/x64/Debug
 /x64/Debug
+/Cpp/DataStructures.Gtest/x64/Debug
+/packages/gmock.1.11.0
