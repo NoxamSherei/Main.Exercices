@@ -12,6 +12,8 @@ namespace DataStructures {
 		std::vector<std::string> dataHolder[10];
 		int GetId(unsigned int hash);
 	public:
+		ChainedHashTable() = default;
+		~ChainedHashTable() = default;
 		// Inherited via IHashTable
 		void Push(std::string input);
 		bool Contain(std::string input);

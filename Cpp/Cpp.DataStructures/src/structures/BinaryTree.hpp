@@ -1,17 +1,19 @@
 ﻿#pragma once
-#include "Node.hpp"
+#include "nodes/TreeNode.hpp"
 #include "interfaces/ITree.hpp"
 #include <string>
 #include <sstream>
 
 namespace DataStructures {
-
+	using namespace Nodes;
 	class BinaryTree :public ITree<int> {
 	private:
-		std::shared_ptr<Node<int>> root;
+		std::shared_ptr<TreeNode<int>> root;
 		size_t size = 0;
-		void PrintDeeper(std::ostringstream& os, std::shared_ptr < Node<int>> currentNode, int&& deep, bool isleft) const;
+		void PrintDeeper(std::ostringstream& os, std::shared_ptr < TreeNode<int>> currentNode, int&& deep, bool isleft) const;
 	public:
+		BinaryTree() = default;
+		~BinaryTree() = default;
 		// Inherited via ITree
 		void Push(int input);
 		int Top() const;

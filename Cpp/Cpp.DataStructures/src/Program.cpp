@@ -6,7 +6,9 @@
 #include "structures/StackVector.hpp"
 #include "structures/QueueVector.hpp"
 #include "structures/BinaryTree.hpp"
-#include "structures/ChainedHashTable.h"
+#include "structures/ChainedHashTable.hpp"
+#include "structures/OneWayList.hpp"
+#include "structures/TwoWayList.hpp"
 #include "utilities/Console.hpp"
 
 
@@ -37,12 +39,28 @@ int main() {
 	}
 	Console::EndLine();
 	DataStructures::BinaryTree tree;
+	DataStructures::OneWayList list;
+	DataStructures::TwoWayList list2;
 	int tab[10] = { 5,3,7,6,8,4,2,1,10,9 };
 	for (size_t i = 0; i < 10; i++)
 	{
 		tree.Push(tab[i]);
 	}
-	Console::WriteLine("Top " + tree.Top());
+	for (size_t i = 0; i < 10; i++)
+	{
+		list.Push(tab[i]);
+		list2.Push(tab[i]);
+	}
+	Console::WriteLine(list.Print());
+	list.PopFront();
+	Console::WriteLine(list.Print());
+	list.PopBack();
+	Console::WriteLine(list.Print());
+	Console::WriteLine(list2.Print());
+	list2.PopFront();
+	Console::WriteLine(list2.Print());
+	list2.PopBack();
+	Console::WriteLine(list2.Print());
 	Console::WriteLine(tree.Print());
 	Console::WriteLine(tree.DFSDepth());
 	Console::WriteLine(tree.BFSDepth());

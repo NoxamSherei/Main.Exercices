@@ -27,9 +27,6 @@
     <ClInclude Include="src\utilities\Console.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\structures\Node.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\structures\BinaryTree.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -42,10 +39,31 @@
     <ClInclude Include="src\structures\interfaces\IDSBasics.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\structures\ChainedHashTable.h">
+    <ClInclude Include="src\structures\ChainedHashTable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\structures\interfaces\IHashTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\nodes\OneWayNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\nodes\TreeNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\nodes\TwoWayNode.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\interfaces\IOneWayList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\OneWayList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\interfaces\ITwoWayList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\structures\TwoWayList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -57,6 +75,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\structures\ChainedHashTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\structures\OneWayList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\structures\TwoWayList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

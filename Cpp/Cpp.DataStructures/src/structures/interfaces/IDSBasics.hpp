@@ -1,5 +1,5 @@
 #pragma once
-#include "../Node.hpp"
+#include "../nodes/TreeNode.hpp"
 #include <string>
 
 namespace DataStructures {
@@ -46,6 +46,12 @@ public:
 	};
 
 	template<typename TData>
+	__interface ITargetPopable {
+public:
+	virtual bool Pop(TData input) = 0;
+	};
+
+	template<typename TData>
 	__interface ITopElement {
 public:
 	virtual TData Top() const = 0;
@@ -60,7 +66,7 @@ public:
 	template<typename TData>
 	__interface IExtractNode {
 public:
-	virtual Node<TData> Take(TData Take) const = 0;
+	virtual Nodes::TreeNode<TData> Take(TData Take) const = 0;
 	};
 
 	template<typename TData>

@@ -1,5 +1,5 @@
 #pragma once
-#include "ChainedHashTable.h"
+#include "ChainedHashTable.hpp"
 #include "math.h"
 namespace DataStructures {
 	void ChainedHashTable::Push(std::string input)

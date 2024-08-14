@@ -130,14 +130,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\structures\BinaryTree.hpp" />
-    <ClInclude Include="src\structures\ChainedHashTable.h" />
+    <ClInclude Include="src\structures\ChainedHashTable.hpp" />
+    <ClInclude Include="src\structures\interfaces\ITwoWayList.hpp" />
+    <ClInclude Include="src\structures\OneWayList.hpp" />
     <ClInclude Include="src\structures\interfaces\IDSBasics.hpp" />
     <ClInclude Include="src\structures\interfaces\IHashTable.h" />
+    <ClInclude Include="src\structures\interfaces\IOneWayList.hpp" />
     <ClInclude Include="src\structures\interfaces\ITree.hpp" />
+    <ClInclude Include="src\structures\nodes\OneWayNode.hpp" />
+    <ClInclude Include="src\structures\nodes\TreeNode.hpp" />
+    <ClInclude Include="src\structures\nodes\TwoWayNode.hpp" />
+    <ClInclude Include="src\structures\TwoWayList.hpp" />
     <ClInclude Include="src\utilities\Console.hpp" />
     <ClInclude Include="src\utilities\ECompareResult.hpp" />
     <ClInclude Include="src\structures\interfaces\ISimpleContainer.hpp" />
-    <ClInclude Include="src\structures\Node.hpp" />
     <ClInclude Include="src\structures\QueueVector.hpp" />
     <ClInclude Include="src\structures\StackVector.hpp" />
   </ItemGroup>
@@ -145,6 +151,8 @@
     <ClCompile Include="src\Program.cpp" />
     <ClCompile Include="src\structures\BinaryTree.cpp" />
     <ClCompile Include="src\structures\ChainedHashTable.cpp" />
+    <ClCompile Include="src\structures\OneWayList.cpp" />
+    <ClCompile Include="src\structures\TwoWayList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,12 +7,12 @@
 namespace DataStructures {
 	void BinaryTree::Push(int input)
 	{
-		std::shared_ptr<Node<int>>* currentNode = &root;
-		std::shared_ptr<Node<int>>* prevNode = nullptr;
+		std::shared_ptr<TreeNode<int>>* currentNode = &root;
+		std::shared_ptr<TreeNode<int>>* prevNode = nullptr;
 		while (true) {
 			prevNode = currentNode;
 			if (!*currentNode) {
-				*currentNode = std::make_shared<Node<int>>(*prevNode, input);
+				*currentNode = std::make_shared<TreeNode<int>>(*prevNode, input);
 				size++;
 				break;
 			}
@@ -38,8 +38,8 @@ namespace DataStructures {
 		if (IsEmpty()) {
 			return false;
 		}
-		std::shared_ptr<Node<int>> currentNode = root;
-		std::shared_ptr<Node<int>> prevNode = nullptr;
+		std::shared_ptr<TreeNode<int>> currentNode = root;
+		std::shared_ptr<TreeNode<int>> prevNode = nullptr;
 		while (currentNode) {
 			if (currentNode->data == input) {
 				return true;
@@ -76,7 +76,7 @@ namespace DataStructures {
 		PrintDeeper(os, root->right, 1, false);
 		return os.str();
 	}
-	void BinaryTree::PrintDeeper(std::ostringstream& os, std::shared_ptr < Node<int>> currentNode, int&& deep, bool isleft) const {
+	void BinaryTree::PrintDeeper(std::ostringstream& os, std::shared_ptr < TreeNode<int>> currentNode, int&& deep, bool isleft) const {
 		if (!currentNode) {
 			return;
 		}
@@ -88,34 +88,34 @@ namespace DataStructures {
 	}
 	size_t BinaryTree::DFSDepth() const {
 		int maxDeep = 1;
-		std::stack<std::pair<std::shared_ptr<Node<int>>, int>> check;
+		std::stack<std::pair<std::shared_ptr<TreeNode<int>>, int>> check;
 		check.push({ root,1 });
 		while (!check.empty()) {
-			auto [current, depth] = check.top();
+			auto [currentNode, depth] = check.top();
 			check.pop();
 			maxDeep = std::max(maxDeep, depth);
-			if (current->left) {
-				check.push({ current->left,depth + 1 });
+			if (currentNode->left) {
+				check.push({ currentNode->left,depth + 1 });
 			}
-			if (current->right) {
-				check.push({ current->right,depth + 1 });
+			if (currentNode->right) {
+				check.push({ currentNode->right,depth + 1 });
 			}
 		}
 		return maxDeep;
 	}
 	size_t BinaryTree::BFSDepth() const {
 		int maxDeep = 1;
-		std::queue<std::pair<std::shared_ptr<Node<int>>, int>> check;
+		std::queue<std::pair<std::shared_ptr<TreeNode<int>>, int>> check;
 		check.push({ root,1 });
 		while (!check.empty()) {
-			auto [current,depth] = check.front();
+			auto [currentNode,depth] = check.front();
 			check.pop();
 			maxDeep = std::max(maxDeep, depth);
-			if (current->left) {
-				check.push({ current->left,depth + 1 });
+			if (currentNode->left) {
+				check.push({ currentNode->left,depth + 1 });
 			}
-			if (current->right) {
-				check.push({ current->right,depth + 1 });
+			if (currentNode->right) {
+				check.push({ currentNode->right,depth + 1 });
 			}
 		}
 		return maxDeep;
