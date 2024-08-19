@@ -129,13 +129,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\OrderCatche\OrderCache.h" />
-    <ClInclude Include="src\OrderCatche\OrderCacheImpl.h" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="src\OrderCatche\OrderCacheImpl.hpp" />
     <ClCompile Include="src\OrderCatche\OrderCacheImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\OrderCatche\ReadMe" />
+    <None Include="src\OrderCatche\ReadMe.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

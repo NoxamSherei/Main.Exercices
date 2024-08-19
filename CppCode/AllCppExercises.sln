@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructuresInCpp", "DataStructuresInCpp\DataStructures.vcxproj", "{D6B87D59-DBB7-4DC2-93EB-4E2ADD312B04}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures", "DataStructures\DataStructures.vcxproj", "{D6B87D59-DBB7-4DC2-93EB-4E2ADD312B04}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures.Gtest", "DataStructuresInCpp.GTest\DataStructures.Gtest.vcxproj", "{B6B8993E-D749-481A-AA6C-B03862B773DF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructures.Gtest", "DataStructures.GTest\DataStructures.Gtest.vcxproj", "{B6B8993E-D749-481A-AA6C-B03862B773DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D6B87D59-DBB7-4DC2-93EB-4E2ADD312B04} = {D6B87D59-DBB7-4DC2-93EB-4E2ADD312B04}
 	EndProjectSection
