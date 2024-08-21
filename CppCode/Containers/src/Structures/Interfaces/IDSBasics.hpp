@@ -2,7 +2,6 @@
 #include <string>
 
 namespace DataStructures {
-	template<typename TData>
 	__interface IPrintable {
 public:
 	virtual std::string Print() const = 0;
@@ -27,6 +26,12 @@ public:
 	};
 
 	template<typename TData>
+	__interface IPopable {
+public:
+	virtual const bool Pop() = 0;
+	};
+
+	template<typename TData>
 	__interface IFrontPopable {
 public:
 	virtual const bool PopFront() = 0;
@@ -38,11 +43,6 @@ public:
 	virtual const bool PopBack() = 0;
 	};
 
-	template<typename TData>
-	__interface IPopable {
-public:
-	virtual const bool Pop() = 0;
-	};
 
 	template<typename TData>
 	__interface ITargetPopable {
@@ -74,21 +74,14 @@ public:
 	virtual const bool Contain(TData input) = 0;
 	};
 
-	template<typename TData>
-	__interface ICountable {
-public:
-	virtual const size_t Count() const = 0;
-	};
-
-	template<typename TData>
 	__interface IDeepCheckable {
 public:
 	virtual const size_t Depth() const = 0;
 	};
 
-	template<typename TData>
 	__interface IEmptyCheckable {
 public:
+	virtual const size_t Count() const = 0;
 	virtual const bool IsEmpty() const = 0;
 	};
 

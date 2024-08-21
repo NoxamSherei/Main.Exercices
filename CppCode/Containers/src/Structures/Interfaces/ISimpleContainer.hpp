@@ -5,11 +5,10 @@ namespace DataStructures {
 	template<typename TData>
 	__interface ISimpleContainer :
 		IPopable<TData>,
-		IEmptyCheckable <TData>,
+		IEmptyCheckable,
 		IInsertable<TData>,
 		ITopElement<TData>,
 		IContain<TData>,
-		ICountable<TData>,
-		IPrintable<TData> {
+		IPrintable {
 	};
 }

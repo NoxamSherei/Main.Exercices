@@ -7,8 +7,7 @@ namespace DataStructures {
 		IInsertable<TData>,
 		IRootElement<TData>,
 		IContain<TData>,
-		IDeepCheckable<TData>,
-		ICountable<TData>,
-		IEmptyCheckable<TData>,
-		IPrintable<TData> {};
+		IDeepCheckable,
+		IEmptyCheckable,
+		IPrintable {};
 }

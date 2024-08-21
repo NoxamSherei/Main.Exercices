@@ -6,9 +6,8 @@ namespace DataStructures {
 	__interface IHashTable :
 		IInsertable<TData>,
 		IContain<TData>,
-		IDeepCheckable<TData>,
-		ICountable<TData>,
-		IEmptyCheckable<TData>,
-		IPrintable<TData>,
+		IDeepCheckable,
+		IEmptyCheckable,
+		IPrintable,
 		IHashable<TData>{};
 }

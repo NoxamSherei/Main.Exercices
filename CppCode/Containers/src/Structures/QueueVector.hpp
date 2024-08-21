@@ -6,9 +6,9 @@
 
 namespace DataStructures {
 	template<typename TData>
-	class QueueVector :public ISimpleContainer<char> {
+	class QueueVector :public ISimpleContainer<TData> {
 	private:
-		std::vector<char> dataHolder;
+		std::vector<TData> dataHolder;
 	public:
 		QueueVector() = default;
 		~QueueVector() = default;
@@ -18,6 +18,9 @@ namespace DataStructures {
 		}
 
 		TData Top() const {
+			if (IsEmpty()) {
+				return TData();
+			}
 			return dataHolder.front();
 		}
 
@@ -31,7 +34,7 @@ namespace DataStructures {
 			return false;
 		}
 
-		bool Pop() {
+		const bool Pop() {
 			if (IsEmpty()) {
 				return false;
 			}

@@ -130,11 +130,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\packages\gmock.1.11.0\lib\native\src\gtest\src\gtest_main.cc" />
+    <ClCompile Include="DataStructuresTest\TwoWayListTestFixture.cpp" />
     <ClInclude Include="pch.h" />
     <ClCompile Include="DataStructuresTest\BinaryTreeRawTest.cpp" />
     <ClCompile Include="DataStructuresTest\BinaryTreeTest.cpp" />
     <ClCompile Include="DataStructuresTest\CianedHashTableTest.cpp" />
-    <ClCompile Include="DataStructuresTest\StackTest.cpp" />
+    <ClCompile Include="DataStructuresTest\QueueVectorTestFixture.cpp" />
+    <ClCompile Include="DataStructuresTest\StackVectorTestFixture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

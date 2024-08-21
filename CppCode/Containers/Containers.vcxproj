@@ -137,6 +137,7 @@
     <ClInclude Include="src\Structures\Interfaces\ITree.hpp" />
     <ClInclude Include="src\Structures\QueueVector.hpp" />
     <ClInclude Include="src\Structures\StackVector.hpp" />
+    <ClInclude Include="src\Structures\TwoWayListRawPointer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Structures\BinaryTree.cpp" />
