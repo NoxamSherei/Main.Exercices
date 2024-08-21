@@ -1,3 +1,4 @@
+#pragma once
 #include "../pch.h"
 #include <structures/StackVector.hpp>
 #include <algorithm>
@@ -9,11 +10,6 @@ protected:
 	virtual void SetUp()
 	{
 		std::iota(testData.begin(), testData.end(), 1);
-
-		std::random_device rd;
-		std::mt19937 g(rd());
-
-		std::shuffle(testData.begin(), testData.end(), g);
 	}
 
 	virtual void TearDown()

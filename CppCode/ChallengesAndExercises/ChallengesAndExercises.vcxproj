@@ -133,6 +133,7 @@
     <ClCompile Include="src\OrderCatche\OrderCacheImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\OrderCatche\OrderCacheExercise.md" />
     <None Include="src\OrderCatche\ReadMe.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

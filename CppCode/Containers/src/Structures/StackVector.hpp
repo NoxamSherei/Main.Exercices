@@ -6,7 +6,7 @@
 
 namespace DataStructures {
 	template<typename TData>
-	class StackVector :public ISimpleContainer<TData> {
+	class StackVector {
 	private:
 		std::vector<TData> dataHolder;
 	public:
