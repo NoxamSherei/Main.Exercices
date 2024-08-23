@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Containers", "Containers\Containers.pyproj", "{C424A7FB-556F-4FD4-8356-DE4980BB2C4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C424A7FB-556F-4FD4-8356-DE4980BB2C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C424A7FB-556F-4FD4-8356-DE4980BB2C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {18C9AA20-5E82-47A6-85AD-1287D38BFF13}
+	EndGlobalSection
+EndGlobal
