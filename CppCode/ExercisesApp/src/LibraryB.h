@@ -1,5 +1,6 @@
 #pragma once
-#include "ILibrary.h"
+#include "interfaces/ILibrary.h"
+#include "unordered_map"
 
 class LibraryB : public ILibrary {
 	using BookPtr = std::shared_ptr<Book>;

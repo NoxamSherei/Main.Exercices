@@ -1,11 +1,16 @@
 #pragma once
-#include "ILibrary.h"
+
+#include "interfaces/ILibrary.h"
+#include "interfaces/ILibraryFasede.h"
+#include "Model/LibraryType.h"
 #include "LibraryA.h"
 #include "LibraryB.h"
-#include "LibraryType.h"
+
 #include "vector"
 #include "utility"
-class LibraryFasade {
+
+
+class LibraryFasade: public ILibraryFasade {
 private:
 	using LibraryPtr = std::shared_ptr<ILibrary>;
 	std::unordered_map<int, LibraryPtr> libraries;
@@ -51,12 +56,16 @@ public:
 		librariesToAdd.push_back(std::make_pair(as_integer(type), std::move(library)));
 		return this;
 	}
+	LibraryFasadeBuilder* ClearLibrary() {
+		librariesToAdd.clear();
+		return this;
+	}
 
-	LibraryFasade* Build() {
+	std::unique_ptr<ILibraryFasade> Build() {
 		std::unordered_map<int, LibraryPtr> libraries;
 		for (auto library : librariesToAdd) {
 			libraries[library.first] = library.second;
 		}
-		return new LibraryFasade(libraries);
+		return std::make_unique<LibraryFasade>(libraries);
 	}
 };

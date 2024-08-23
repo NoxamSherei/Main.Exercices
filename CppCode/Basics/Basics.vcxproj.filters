@@ -15,30 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="start.cpp">
+    <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Model\Book.h">
+    <ClInclude Include="CtorDtor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\interfaces\ILibrary.h">
+    <ClInclude Include="Multithreading.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\LibraryA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LibraryB.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\LibraryFasade.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Model\LibraryType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\interfaces\ILibraryFasede.h">
+    <ClInclude Include="TimeCheck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

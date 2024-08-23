@@ -3,15 +3,21 @@
 #include <unordered_map>
 #include <algorithm>
 #include "src/LibraryFasade.h"
-#include "src/LibraryType.h"
+#include "src/Model/LibraryType.h"
+#include "src/Model/Book.h"
 
-int main()
-{
-	LibraryFasadeBuilder* builder = new LibraryFasadeBuilder();
-	LibraryFasade* library = builder->
+std::unique_ptr<ILibraryFasade> Build(std::unique_ptr<LibraryFasadeBuilder>&& builder) {
+	std::unique_ptr<ILibraryFasade> library = builder->
 		AddLibrary(LibraryType::LibA, std::make_shared<LibraryA>())->
 		AddLibrary(LibraryType::LibB, std::make_shared<LibraryB>())->
 		Build();
+	return library;
+}
+
+int main()
+{
+	auto libraryFasedeBuilder = std::make_unique<LibraryFasadeBuilder>();
+	std::unique_ptr<ILibraryFasade> library = Build(std::move(libraryFasedeBuilder));
 	library->addBook("Frank", "Dune1", LibraryType::LibA);
 	library->addBook("Smith", "Pamietniki wampirow", LibraryType::LibA);
 	library->addBook("Trudi Caravan", "Ambasador", LibraryType::LibA);
