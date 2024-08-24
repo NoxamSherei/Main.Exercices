@@ -1,15 +1,14 @@
 #pragma once
 
 #include "iostream"
-class CtorDtor {
-public:
+namespace CtorDtor {
 	class A {
 	public:
 		int x;
 		A(int x) :x(x) {
 			std::cout << "ctor A" << x << std::endl;
 		}
-		virtual ~A() {
+		virtual ~A() { // virtual destructor is neccesary for destroying obj properly
 			std::cout << "dtor A" << x << std::endl;
 		}
 		virtual void print() {
@@ -42,7 +41,7 @@ public:
 		}
 	};
 
-	void doCtorDtor() {
+	void DoExample() {
 		A* a5 = new C(5);//A->B->C
 		C c1(1);
 		C c2(2);

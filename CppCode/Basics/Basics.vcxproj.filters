@@ -29,5 +29,11 @@
     <ClInclude Include="TimeCheck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Rules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

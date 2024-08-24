@@ -132,6 +132,8 @@
   <ItemGroup>
     <ClInclude Include="CtorDtor.h" />
     <ClInclude Include="Multithreading.h" />
+    <ClInclude Include="Rules.h" />
+    <ClInclude Include="Template.h" />
     <ClInclude Include="TimeCheck.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

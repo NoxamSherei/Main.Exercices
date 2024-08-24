@@ -2,9 +2,11 @@
 #include "mutex"
 #include "thread"
 #include "atomic"
+#include "vector"
+#include "iostream"
 
 class Multithreading {
-	//dangers//dataracing//deadlock//starving
+	//dangers: dataracing, deadlock, starving
 	int unsafe_x = 0;
 	int mutex_x = 0;
 	int lockguard_x = 0;
@@ -21,11 +23,12 @@ class Multithreading {
 		lockguard_x++;
 	}
 public:
-	void DoJob() {
+	void DoExample() {
 		std::vector<std::thread*> threads;
 		for (size_t i = 0; i < 10000; i++)
 		{
-			std::thread* th = new std::thread([&]() {add(); });
+			std::thread* th = new std::thread([&]() {
+				add();});
 			threads.push_back(th);
 		}
 		for (auto& th : threads) {
