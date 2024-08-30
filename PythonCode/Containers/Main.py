@@ -1,8 +1,10 @@
-from Stack import IInsert, Stack, IStack
+﻿from Stack import IInsert, Stack, IStack
 #first comment
 
 def main():
     print("Hello World!")
+    toppings = ['hamburger', 'pepperoni', 'mushroom', 'jalepeño', 'cheese', 'bacon']
+    print(toppings[2:4])
     myStack: IStack = Stack()
     insertingObj: IInsert = myStack
     print("Print __str__():",str(myStack))

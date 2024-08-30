@@ -132,7 +132,8 @@
     <ClInclude Include="src\Structures\BinaryTreeRaw.hpp" />
     <ClInclude Include="src\Structures\ChainedHashTable.hpp" />
     <ClInclude Include="src\Structures\Interfaces\IDSBasics.hpp" />
-    <ClInclude Include="src\Structures\Interfaces\IHashTable.h" />
+    <ClInclude Include="src\Structures\Interfaces\IHashTable.hpp" />
+    <ClInclude Include="src\Structures\Interfaces\IList.hpp" />
     <ClInclude Include="src\Structures\Interfaces\ISimpleContainer.hpp" />
     <ClInclude Include="src\Structures\Interfaces\ITree.hpp" />
     <ClInclude Include="src\Structures\QueueVector.hpp" />
@@ -141,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Structures\BinaryTree.cpp" />
-    <ClCompile Include="src\Structures\ChainedHashTable.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

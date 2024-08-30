@@ -66,7 +66,7 @@ TEST_F(StackVectorTestFixture, InsertOnStack) {
 	ASSERT_EQ(container->Count(), testData.size());
 }
 
-TEST_F(StackVectorTestFixture, PopFromStack) {
+TEST_F(StackVectorTestFixture, RemoveFromStack) {
 	for (const auto& elem : testData) {
 		container->Insert(elem);
 	}
@@ -75,7 +75,7 @@ TEST_F(StackVectorTestFixture, PopFromStack) {
 		ASSERT_EQ(container->Top(), *it);
 		ASSERT_TRUE(container->Contain(*it));
 
-		container->Pop();
+		container->Remove();
 
 		ASSERT_FALSE(container->Contain(*it));
 	}

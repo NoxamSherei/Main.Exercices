@@ -4,7 +4,7 @@
 namespace DataStructures {
 	__interface IPrintable {
 public:
-	virtual std::string Print() const = 0;
+	virtual std::string ToString() const = 0;
 	};
 
 	template<typename TData>
@@ -26,28 +26,28 @@ public:
 	};
 
 	template<typename TData>
-	__interface IPopable {
+	__interface IRemoveable {
 public:
-	virtual const bool Pop() = 0;
+	virtual const bool Remove() = 0;
 	};
 
 	template<typename TData>
-	__interface IFrontPopable {
+	__interface IFrontRemovable {
 public:
-	virtual const bool PopFront() = 0;
+	virtual const bool RemoveFront() = 0;
 	};
 
 	template<typename TData>
-	__interface IBackPopable {
+	__interface IBackRemovable {
 public:
-	virtual const bool PopBack() = 0;
+	virtual const bool RemoveBack() = 0;
 	};
 
 
 	template<typename TData>
-	__interface ITargetPopable {
+	__interface ITargetRemovable {
 public:
-	virtual const bool Pop(TData input) = 0;
+	virtual const bool Remove(TData input) = 0;
 	};
 
 	template<typename TData>

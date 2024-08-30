@@ -1,21 +1,8 @@
 #pragma once
-#include "Interfaces/IDSBasics.hpp"
+#include "Interfaces/IList.hpp"
 #include "sstream"
 
 namespace DataStructures {
-	template<typename TData>
-	__interface IList :
-		IInsertable<TData>,
-		IInsertableBack <TData>,
-		IInsertableFront <TData>,
-		IPopable<TData>,
-		IFrontPopable<TData>,
-		IBackPopable<TData>,
-		IPrintable,
-		IEmptyCheckable,
-		IContain<TData> {
-	};
-
 	template<typename TData>
 	class TwoWayListRawPointer :public IList<TData> {
 	private:
@@ -40,7 +27,7 @@ namespace DataStructures {
 			end = front = new Node(nullptr, input);
 			size++;
 		}
-		void PopLast() {
+		void RemoveLast() {
 			delete front;
 			end = front = nullptr;
 			size--;
@@ -70,15 +57,15 @@ namespace DataStructures {
 			front = newNode;
 			size++;
 		}
-		virtual const bool Pop() override {
-			return PopBack();
+		virtual const bool Remove() override {
+			return RemoveBack();
 		}
-		virtual const bool PopBack() override {
+		virtual const bool RemoveBack() override {
 			if (IsEmpty()) {
 				return false;
 			}
 			if (Count() == 1) {
-				PopLast();
+				RemoveLast();
 				return true;
 			}
 			auto node = end;
@@ -88,12 +75,12 @@ namespace DataStructures {
 			size--;
 			return true;
 		}
-		virtual const bool PopFront() override {
+		virtual const bool RemoveFront() override {
 			if (IsEmpty()) {
 				return false;
 			}
 			if (Count() == 1) {
-				PopLast();
+				RemoveLast();
 				return true;
 			}
 			auto node = front;
@@ -121,7 +108,7 @@ namespace DataStructures {
 			}
 			return false;
 		}
-		virtual std::string Print() const override {
+		virtual std::string ToString() const override {
 			std::ostringstream os;
 			os << "List{size:"<<size<<",content:";
 			auto currentNode = front;

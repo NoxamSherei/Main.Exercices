@@ -62,7 +62,7 @@ TEST_F(QueueVectorTestFixture, InsertOnQueue) {
 	ASSERT_EQ(container->Count(), testData.size());
 }
 
-TEST_F(QueueVectorTestFixture, PopFromQueue) {
+TEST_F(QueueVectorTestFixture, RemoveFromQueue) {
 	for (const auto& elem : testData) {
 		container->Insert(elem);
 	}
@@ -71,7 +71,7 @@ TEST_F(QueueVectorTestFixture, PopFromQueue) {
 		ASSERT_EQ(container->Top(), *it);
 		ASSERT_TRUE(container->Contain(*it));
 
-		container->Pop();
+		container->Remove();
 
 		ASSERT_FALSE(container->Contain(*it));
 	}

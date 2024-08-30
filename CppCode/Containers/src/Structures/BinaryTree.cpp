@@ -68,7 +68,7 @@ namespace DataStructures {
 		return size;
 	}
 
-	std::string BinaryTree::Print() const
+	std::string BinaryTree::ToString() const
 	{
 		std::ostringstream os;
 		os << "root:" << root->data << std::endl;

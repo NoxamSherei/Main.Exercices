@@ -34,7 +34,7 @@ namespace DataStructures {
 			return false;
 		}
 
-		const bool Pop() {
+		const bool Remove() {
 			if (IsEmpty()) {
 				return false;
 			}
@@ -50,7 +50,7 @@ namespace DataStructures {
 			return dataHolder.size();
 		}
 		
-		std::string Print() const {
+		std::string ToString() const {
 			std::ostringstream output;
 			for (const auto& var : dataHolder)
 			{

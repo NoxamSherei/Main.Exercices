@@ -6,6 +6,7 @@
 #include <numeric>
 
 class ChainedHashTableFixture :public ::testing::Test {
+	using HashTable = ::DataStructures::ChainedHashTable<std::string>;
 protected:
 	virtual void SetUp()
 	{
@@ -17,7 +18,8 @@ protected:
 	}
 	std::string sentence = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 	std::vector<std::string> testData;
-	std::unique_ptr<::DataStructures::ChainedHashTable> container = std::make_unique<::DataStructures::ChainedHashTable>();
+	std::unique_ptr<HashTable> container =
+		std::make_unique<HashTable>();
 };
 
 TEST_F(ChainedHashTableFixture, Ctor) {
@@ -26,24 +28,56 @@ TEST_F(ChainedHashTableFixture, Ctor) {
 
 TEST_F(ChainedHashTableFixture, EmptyhashTableCheck) {
 	ASSERT_TRUE(container->IsEmpty());
+
 	container->Insert(testData.front());
+
 	ASSERT_FALSE(container->IsEmpty());
 }
 
 TEST_F(ChainedHashTableFixture, Count) {
 	ASSERT_EQ(container->Count(), 0);
+
 	container->Insert(testData.front());
+
 	ASSERT_EQ(container->Count(), 1);
 }
 
 TEST_F(ChainedHashTableFixture, Contain) {
 	ASSERT_FALSE(container->Contain(testData.front()));
+
 	container->Insert(testData.front());
+
 	ASSERT_TRUE(container->Contain(testData.front()));
+}
+TEST_F(ChainedHashTableFixture, Remove) {
+	EXPECT_EQ(container->Count(), 0);
+	ASSERT_FALSE(container->Contain(testData.front()));
+
+	container->Insert(testData.front());
+
+	EXPECT_EQ(container->Count(), 1);
+	ASSERT_TRUE(container->Contain(testData.front()));
+
+	container->Remove(testData.front());
+
+	EXPECT_EQ(container->Count(), 0);
+	ASSERT_FALSE(container->Contain(testData.front()));
+}
+TEST_F(ChainedHashTableFixture, Depht) {
+	ASSERT_EQ(container->Count(), 0);
+	ASSERT_FALSE(container->Contain(testData.front()));
+
+	container->Insert(testData[0]);
+	container->Insert(testData[0]);
+	container->Insert(testData[1]);
+
+	EXPECT_EQ(container->Count(), 3);
+	ASSERT_EQ(container->Depth(), 2);
 }
 
 TEST_F(ChainedHashTableFixture, InsertOnhashTable) {
 	ASSERT_TRUE(container->IsEmpty());
+
 	for (int i = 0; i < testData.size(); i++) {
 		const auto& elem = testData[i];
 
@@ -53,5 +87,7 @@ TEST_F(ChainedHashTableFixture, InsertOnhashTable) {
 		EXPECT_TRUE(container->Contain(elem));
 		ASSERT_FALSE(container->IsEmpty());
 	}
+
+	EXPECT_TRUE(container->Count() != container->Depth());
 	ASSERT_EQ(container->Count(), testData.size());
 }

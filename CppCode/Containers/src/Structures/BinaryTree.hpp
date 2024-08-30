@@ -34,6 +34,6 @@ namespace DataStructures {
 		const size_t Depth() const;
 		const size_t Count() const;
 		const bool IsEmpty() const;
-		std::string Print() const;
+		std::string ToString() const;
 	};
 }

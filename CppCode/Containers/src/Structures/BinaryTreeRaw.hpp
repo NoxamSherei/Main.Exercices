@@ -45,7 +45,7 @@ namespace DataStructures {
 		const bool Contain(int input) {
 			return true;
 		}
-		std::string Print() const {
+		std::string ToString() const {
 			return std::string();
 		}
 	private:

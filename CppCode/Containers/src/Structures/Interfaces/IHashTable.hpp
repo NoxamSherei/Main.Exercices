@@ -5,9 +5,10 @@ namespace DataStructures {
 	template<typename TData>
 	__interface IHashTable :
 		IInsertable<TData>,
+		ITargetRemovable<TData>,
 		IContain<TData>,
 		IDeepCheckable,
 		IEmptyCheckable,
-		IPrintable,
+		IPrintable, 
 		IHashable<TData>{};
 }

@@ -4,7 +4,7 @@
 namespace DataStructures {
 	template<typename TData>
 	__interface ISimpleContainer :
-		IPopable<TData>,
+		IRemoveable<TData>,
 		IEmptyCheckable,
 		IInsertable<TData>,
 		ITopElement<TData>,
