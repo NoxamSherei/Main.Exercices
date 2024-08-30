@@ -18,6 +18,9 @@
     <ClCompile Include="src\OrderCatche\OrderCacheImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\IPv4\IPv4Adress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\OrderCatche\OrderCache.h">
@@ -26,9 +29,20 @@
     <ClInclude Include="src\OrderCatche\OrderCacheImpl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\SuperTicTacToe\SuperTicTacToe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IPv4\IIPv4.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IPv4\IPv4Adress.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\OrderCatche\ReadMe.md" />
     <None Include="src\OrderCatche\OrderCacheExercise.md" />
+    <None Include="src\SuperTicTacToe\SuperTicTacToe.md" />
+    <None Include="src\IPv4\Readme.md" />
   </ItemGroup>
 </Project>

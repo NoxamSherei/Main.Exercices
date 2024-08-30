@@ -128,13 +128,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\IPv4\IIPv4.hpp" />
+    <ClInclude Include="src\IPv4\IPv4Adress.hpp" />
     <ClInclude Include="src\OrderCatche\OrderCache.h" />
     <ClInclude Include="src\OrderCatche\OrderCacheImpl.hpp" />
+    <ClCompile Include="src\IPv4\IPv4Adress.cpp" />
     <ClCompile Include="src\OrderCatche\OrderCacheImpl.cpp" />
+    <ClInclude Include="src\SuperTicTacToe\SuperTicTacToe.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\IPv4\Readme.md" />
     <None Include="src\OrderCatche\OrderCacheExercise.md" />
     <None Include="src\OrderCatche\ReadMe.md" />
+    <None Include="src\SuperTicTacToe\SuperTicTacToe.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

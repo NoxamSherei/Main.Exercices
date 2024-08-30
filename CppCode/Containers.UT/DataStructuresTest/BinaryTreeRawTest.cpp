@@ -1,6 +1,8 @@
 #pragma once
 #include "../pch.h"
 #include <structures/BinaryTreeRaw.hpp>
+#include <stack>
+
 
 class BinaryTreeRawTestFixture :public ::testing::Test {
 protected:
@@ -34,4 +36,11 @@ TEST_F(BinaryTreeRawTestFixture, InsertOperation) {
 	EXPECT_EQ(container->Depth(), 2);
 	EXPECT_EQ(container->Count(), 3);
 	ASSERT_FALSE(container->IsEmpty());
+}
+
+TEST(NameOfTheSolutionOrSuite, TestName) {
+	EXPECT_EQ(1, 1);
+	EXPECT_TRUE(true);
+	ASSERT_EQ(1, 1);
+	ASSERT_TRUE(true);
 }

@@ -6,7 +6,10 @@
 #include "iostream"
 
 class Multithreading {
-	//dangers: dataracing, deadlock, starving
+	//dangers: 
+	// * dataracing - process same value in same time
+	// * deadlock - threads can run futher becouse some part of code/variables are locked and not unlocked
+	// * starving - runout from system resources to futher procced with threads
 	int unsafe_x = 0;
 	int mutex_x = 0;
 	int lockguard_x = 0;
@@ -23,7 +26,7 @@ class Multithreading {
 		lockguard_x++;
 	}
 public:
-	void DoExample() {
+	void doExample() {
 		std::vector<std::thread*> threads;
 		for (size_t i = 0; i < 10000; i++)
 		{

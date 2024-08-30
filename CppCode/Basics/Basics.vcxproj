@@ -127,11 +127,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="RunExamples.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Casting.h" />
     <ClInclude Include="CtorDtor.h" />
+    <ClInclude Include="DefineAndMacros.h" />
+    <ClInclude Include="Exceptions.h" />
     <ClInclude Include="Multithreading.h" />
+    <ClInclude Include="Paterns\Builder.h" />
+    <ClInclude Include="Paterns\DependencyInjection.h" />
+    <ClInclude Include="Pointers.h" />
+    <ClInclude Include="Paterns\RunPaternExample.h" />
+    <ClInclude Include="Paterns\State.h" />
     <ClInclude Include="Rules.h" />
     <ClInclude Include="Template.h" />
     <ClInclude Include="TimeCheck.h" />

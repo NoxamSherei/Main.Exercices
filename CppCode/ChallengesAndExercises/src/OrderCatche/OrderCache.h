@@ -14,12 +14,12 @@ public:
 		const std::string& company)
 		: m_orderId(ordId), m_securityId(secId), m_side(side), m_qty(qty), m_user(user), m_company(company) { }
 	// do not alter these accessor methods 
-	std::string orderId() const { return m_orderId; }
-	std::string securityId() const { return m_securityId; }
-	std::string side() const { return m_side; }
-	std::string user() const { return m_user; }
-	std::string company() const { return m_company; }
-	unsigned int qty() const { return m_qty; }
+	std::string OrderId() const { return m_orderId; }
+	std::string SecurityId() const { return m_securityId; }
+	std::string Side() const { return m_side; }
+	std::string User() const { return m_user; }
+	std::string Company() const { return m_company; }
+	unsigned int Qty() const { return m_qty; }
 private:
 
 	// use the below to hold the order data
@@ -45,21 +45,21 @@ public:
 	// implememnt the 6 methods below, do not alter signatures
 
 	// add order to the cache
-	virtual void addOrder(Order order) = 0;
+	virtual void AddOrder(Order order) = 0;
 
 	// remove order with this unique order id from the cache
-	virtual void cancelOrder(const std::string& orderId) = 0;
+	virtual void CancelOrder(const std::string& orderId) = 0;
 
 	// remove all orders in the cache for this user
-	virtual void cancelOrdersForUser(const std::string& user) = 0;
+	virtual void CancelOrdersForUser(const std::string& user) = 0;
 
 	// remove all orders in the cache for this security with qty >= minQty
-	virtual void cancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty) = 0;
+	virtual void CancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty) = 0;
 
 	// return the total qty that can match for the security id
-	virtual unsigned int getMatchingSizeForSecurity(const std::string& securityId) = 0;
+	virtual unsigned int GetMatchingSizeForSecurity(const std::string& securityId) = 0;
 
 	// return all orders in cache in a vector
-	virtual std::vector<Order> getAllOrders() const = 0;
+	virtual std::vector<Order> GetAllOrders() const = 0;
 
 };

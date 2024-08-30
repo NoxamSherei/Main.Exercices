@@ -8,7 +8,9 @@ namespace CtorDtor {
 		A(int x) :x(x) {
 			std::cout << "ctor A" << x << std::endl;
 		}
-		virtual ~A() { // virtual destructor is neccesary for destroying obj properly
+		virtual ~A() { 
+			// virtual destructor is neccesary for destroying obj properly
+			// add this destructor to vtable
 			std::cout << "dtor A" << x << std::endl;
 		}
 		virtual void print() {
@@ -41,7 +43,7 @@ namespace CtorDtor {
 		}
 	};
 
-	void DoExample() {
+	void doExample() {
 		A* a5 = new C(5);//A->B->C
 		C c1(1);
 		C c2(2);

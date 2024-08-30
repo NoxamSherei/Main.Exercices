@@ -33,27 +33,27 @@ public:
 	/// Checks if there are no securities or users with empty orders.
 	/// Function mainly for testing
 	/// </summary>
-	const bool noEmptySecurityAndUser() const ;
+	const bool NoEmptySecurityAndUser() const ;
 
 	// Checks if an order does not exist in the order cache by its ID.
-	inline const bool orderNotExist(const std::string& orderId) const;
+	inline const bool OrderNotExist(const std::string& orderId) const;
 
 	// Checks if an order has the correct format (i.e., quantity is not zero and side is either "Buy" or "Sell").
-	inline const bool orderHasCorrectFormat(const Order& order) const;
+	inline const bool OrderHasCorrectFormat(const Order& order) const;
 
 	// Checks if a user does not exist in the user orders map by their user name.
-	inline const bool userNotExist(const std::string& userName) const;
+	inline const bool UserNotExist(const std::string& userName) const;
 
 	// Checks if a security ID does not exist in the securities orders map.
-	inline const bool securityIDNotExist(const std::string& securityId) const;
+	inline const bool SecurityIDNotExist(const std::string& securityId) const;
 
 	// Inherited via OrderCacheInterface
-	void addOrder(Order order) ;
-	void cancelOrder(const std::string& orderId) ;
-	void cancelOrdersForUser(const std::string& user) ;
-	void cancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty) ;
-	unsigned int getMatchingSizeForSecurity(const std::string& securityId) ;
-	std::vector<Order> getAllOrders() const ;
+	void AddOrder(Order order) ;
+	void CancelOrder(const std::string& orderId) ;
+	void CancelOrdersForUser(const std::string& user) ;
+	void CancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty) ;
+	unsigned int GetMatchingSizeForSecurity(const std::string& securityId) ;
+	std::vector<Order> GetAllOrders() const ;
 private:
 	/// <summary>
 	/// I Add this function to simplify code and update readability, this inline function decide if use
@@ -64,16 +64,16 @@ private:
 	/// if we decide use other collection like list, set in future it still will work</typeparam>
 	/// <param name="target">is element or collection of elements to remove</param>
 	template<typename TTargeted>
-	inline void removeTargetedFromCashe(TTargeted target) {
+	inline void RemoveTargetedFromCashe(TTargeted target) {
 		// If the target is a single order ID (std::string), remove it.
 		if constexpr (std::is_same_v<TTargeted, std::string>) {
-			removeOrderFromCashe(target);
+			RemoveOrderFromCashe(target);
 		}
 		// If the target is a collection of order IDs, remove each one.
 		else
 		{
 			for (const auto& orderId : target) {
-				removeOrderFromCashe(orderId);
+				RemoveOrderFromCashe(orderId);
 			}
 		}
 	}
@@ -82,5 +82,5 @@ private:
 	/// Removes a single order from the cache by its order ID.
 	/// </summary>
 	/// <param name="orderId">The ID of the order to remove.</param>
-	void removeOrderFromCashe(const std::string& orderId) ;
+	void RemoveOrderFromCashe(const std::string& orderId) ;
 };

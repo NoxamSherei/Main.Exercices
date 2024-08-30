@@ -29,14 +29,14 @@ TEST_F(OrderCatcheTestFixture, Example1) {
 			new Order("OrdId8", "SecId2", "Sell", 5000, "User8", "CompanyE")
 	};
 	for (auto elem : vec_orders) {
-		orderCache->addOrder(*elem);
+		orderCache->AddOrder(*elem);
 	}
 	auto expectedMatch1 = 0;
 	auto expectedMatch2 = 2700;
 	auto expectedMatch3 = 0;
-	EXPECT_EQ(orderCache->getMatchingSizeForSecurity("SecId1"), expectedMatch1);
-	EXPECT_EQ(orderCache->getMatchingSizeForSecurity("SecId2"), expectedMatch2);
-	ASSERT_EQ(orderCache->getMatchingSizeForSecurity("SecId3"), expectedMatch3);
+	EXPECT_EQ(orderCache->GetMatchingSizeForSecurity("SecId1"), expectedMatch1);
+	EXPECT_EQ(orderCache->GetMatchingSizeForSecurity("SecId2"), expectedMatch2);
+	ASSERT_EQ(orderCache->GetMatchingSizeForSecurity("SecId3"), expectedMatch3);
 }
 TEST_F(OrderCatcheTestFixture, Example2) {
 	vec_orders = {
@@ -55,14 +55,14 @@ TEST_F(OrderCatcheTestFixture, Example2) {
 		new Order("OrdId13", "SecId1", "Sell", 1300, "User1", "Company2"),
 	};
 	for (auto elem : vec_orders) {
-		orderCache->addOrder(*elem);
+		orderCache->AddOrder(*elem);
 	}
 	auto expectedMatch1 = 300;
 	auto expectedMatch2 = 1000;
 	auto expectedMatch3 = 600;
-	EXPECT_EQ(orderCache->getMatchingSizeForSecurity("SecId1"), expectedMatch1);
-	EXPECT_EQ(orderCache->getMatchingSizeForSecurity("SecId2"), expectedMatch2);
-	ASSERT_EQ(orderCache->getMatchingSizeForSecurity("SecId3"), expectedMatch3);
+	EXPECT_EQ(orderCache->GetMatchingSizeForSecurity("SecId1"), expectedMatch1);
+	EXPECT_EQ(orderCache->GetMatchingSizeForSecurity("SecId2"), expectedMatch2);
+	ASSERT_EQ(orderCache->GetMatchingSizeForSecurity("SecId3"), expectedMatch3);
 }
 TEST_F(OrderCatcheTestFixture, Example3) {
 	vec_orders = {
@@ -79,14 +79,14 @@ TEST_F(OrderCatcheTestFixture, Example3) {
 		new Order("OrdId11", "SecId2", "Sell", 1100, "User16", "Company2"),
 	};
 	for (auto elem : vec_orders) {
-		orderCache->addOrder(*elem);
+		orderCache->AddOrder(*elem);
 	}
 	auto expectedMatch1 = 900;
 	auto expectedMatch2 = 600;
 	auto expectedMatch3 = 0;
-	EXPECT_EQ(orderCache->getMatchingSizeForSecurity("SecId1"), expectedMatch1);
-	EXPECT_EQ(orderCache->getMatchingSizeForSecurity("SecId2"), expectedMatch2);
-	ASSERT_EQ(orderCache->getMatchingSizeForSecurity("SecId3"), expectedMatch3);
+	EXPECT_EQ(orderCache->GetMatchingSizeForSecurity("SecId1"), expectedMatch1);
+	EXPECT_EQ(orderCache->GetMatchingSizeForSecurity("SecId2"), expectedMatch2);
+	ASSERT_EQ(orderCache->GetMatchingSizeForSecurity("SecId3"), expectedMatch3);
 }
 
 TEST_F(OrderCatcheTestFixture, CancelOrdersByOrderId) {
@@ -96,23 +96,23 @@ TEST_F(OrderCatcheTestFixture, CancelOrdersByOrderId) {
 		new Order("OrdId3", "SecId1", "Buy", 300, "User13", "Company2"),
 	};
 	for (auto elem : vec_orders) {
-		orderCache->addOrder(*elem);
+		orderCache->AddOrder(*elem);
 	}
 	{
-		orderCache->cancelOrder("OrdId1");
-		std::vector<Order> orders1 = orderCache->getAllOrders();
+		orderCache->CancelOrder("OrdId1");
+		std::vector<Order> orders1 = orderCache->GetAllOrders();
 		bool x = std::any_of(orders1.begin(), orders1.end(),
-			[](const Order& elem) {return elem.orderId() == "OrdId1"; });
+			[](const Order& elem) {return elem.OrderId() == "OrdId1"; });
 		ASSERT_FALSE(x);
 	}
 	{
-		orderCache->cancelOrder("OrdId3");
-		std::vector<Order> orders1 = orderCache->getAllOrders();
+		orderCache->CancelOrder("OrdId3");
+		std::vector<Order> orders1 = orderCache->GetAllOrders();
 		bool x = std::any_of(orders1.begin(), orders1.end(),
-			[](const Order& elem) {return elem.orderId() == "OrdId3"; });
+			[](const Order& elem) {return elem.OrderId() == "OrdId3"; });
 		ASSERT_FALSE(x);
 	}
-	ASSERT_TRUE(dynamic_cast<OrderCacheImpl*>(orderCache.get())->noEmptySecurityAndUser());
+	ASSERT_TRUE(dynamic_cast<OrderCacheImpl*>(orderCache.get())->NoEmptySecurityAndUser());
 }
 TEST_F(OrderCatcheTestFixture, CancelOrdersBySecMin) {
 	vec_orders = {
@@ -124,20 +124,20 @@ TEST_F(OrderCatcheTestFixture, CancelOrdersBySecMin) {
 		new Order("OrdId6", "SecId3", "Buy", 600, "User3", "Company1"),
 	};
 	for (auto elem : vec_orders) {
-		orderCache->addOrder(*elem);
+		orderCache->AddOrder(*elem);
 	}
-	orderCache->cancelOrdersForSecIdWithMinimumQty("SecId3", 300);
-	std::vector<Order> orders1 = orderCache->getAllOrders();
+	orderCache->CancelOrdersForSecIdWithMinimumQty("SecId3", 300);
+	std::vector<Order> orders1 = orderCache->GetAllOrders();
 	for (const auto& order : orders1) {
-		if (order.securityId() != "SecId3") {
+		if (order.SecurityId() != "SecId3") {
 			continue;
 		}
-		if (order.qty() < 300) {
+		if (order.Qty() < 300) {
 			continue;
 		}
 		ASSERT_FALSE(true);
 	}
-	ASSERT_TRUE(dynamic_cast<OrderCacheImpl*>(orderCache.get())->noEmptySecurityAndUser());
+	ASSERT_TRUE(dynamic_cast<OrderCacheImpl*>(orderCache.get())->NoEmptySecurityAndUser());
 }
 
 TEST_F(OrderCatcheTestFixture, CancelOrdersByUser) {
@@ -147,23 +147,23 @@ TEST_F(OrderCatcheTestFixture, CancelOrdersByUser) {
 	vec_orders.push_back(new Order("OrdId3", "SecId1", "Sell", 100, "User3", "Company2"));
 
 	for (auto elem : vec_orders) {
-		orderCache->addOrder(*elem);
+		orderCache->AddOrder(*elem);
 	}
 	{
-		orderCache->cancelOrdersForUser("User2");
-		std::vector<Order> orders1 = orderCache->getAllOrders();
+		orderCache->CancelOrdersForUser("User2");
+		std::vector<Order> orders1 = orderCache->GetAllOrders();
 		bool x = std::any_of(orders1.begin(), orders1.end(),
-			[](const Order& elem) {return elem.user() == "User2"; });
+			[](const Order& elem) {return elem.User() == "User2"; });
 		ASSERT_FALSE(x);
 	}
 	{
-		orderCache->cancelOrdersForUser("User3");
-		std::vector<Order> orders1 = orderCache->getAllOrders();
+		orderCache->CancelOrdersForUser("User3");
+		std::vector<Order> orders1 = orderCache->GetAllOrders();
 		bool x = std::any_of(orders1.begin(), orders1.end(),
-			[](const Order& elem) {return elem.user() == "User3"; });
+			[](const Order& elem) {return elem.User() == "User3"; });
 		ASSERT_FALSE(x);
 	}
-	ASSERT_TRUE(dynamic_cast<OrderCacheImpl*>(orderCache.get())->noEmptySecurityAndUser());
+	ASSERT_TRUE(dynamic_cast<OrderCacheImpl*>(orderCache.get())->NoEmptySecurityAndUser());
 }
 
 TEST_F(OrderCatcheTestFixture, ThreadSafe) {
@@ -179,17 +179,17 @@ TEST_F(OrderCatcheTestFixture, ThreadSafe) {
 	}
 	for (size_t i = 0; i < 250; i++)
 	{
-		orderCache->addOrder(*vec_orders[i]);
+		orderCache->AddOrder(*vec_orders[i]);
 	}
 	std::list<std::thread> threads;
 
 	for (size_t i = 250; i < vec_orders.size() - 50; i++)
 	{
-		threads.push_back(std::thread([&]() {orderCache->addOrder(*vec_orders[i]); }));
+		threads.push_back(std::thread([&]() {orderCache->AddOrder(*vec_orders[i]); }));
 	};
 	for (size_t i = 0; i < 3; i++)
 	{
-		threads.push_back(std::thread([&]() {orderCache->getMatchingSizeForSecurity((*vec_orders[i]).securityId()); }));
+		threads.push_back(std::thread([&]() {orderCache->GetMatchingSizeForSecurity((*vec_orders[i]).SecurityId()); }));
 
 	};
 	for (auto& th : threads)

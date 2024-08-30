@@ -12,7 +12,7 @@ namespace Templates {
 		return x + x;
 	}
 	double doSomething(double x)
-	{
+	{		
 		return x + x;
 	}
 	template<typename TTypeName, int y = 42>
@@ -24,13 +24,13 @@ namespace Templates {
 			return x + y;
 		}
 	}
-	/*int doSomething2(int x)
+	/*int doSomething3(int x)
 	{
-		return x + x;
+		return x + y;//where y is 42 by default
 	}
-	std::string doSomething2(std::string x)
+	std::string doSomething3(std::string x)
 	{
-		return x + std::to_string(y);
+		return x + std::to_string(y);//where y is 42 by default
 	}*/
 	template<typename TTypeName>
 	TTypeName doSomething2(TTypeName x) {
@@ -58,7 +58,7 @@ namespace Templates {
 			return dataHolder.back();
 		}
 	};
-	void DoExample() {
+	void doExample() {
 
 		int x = 21;
 		Templates::doSomething2<int>(x);

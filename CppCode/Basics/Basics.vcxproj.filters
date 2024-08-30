@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="RunExamples.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -33,6 +33,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Template.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Casting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paterns\Builder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paterns\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paterns\RunPaternExample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Paterns\DependencyInjection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pointers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DefineAndMacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

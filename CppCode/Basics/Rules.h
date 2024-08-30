@@ -21,7 +21,7 @@ namespace Rules {
 			std::cout << "move_ctor" << *s << std::endl;
 		}
 		~Rule5() {
-			std::cout << "dtor"<<x<<" " << *s << std::endl;
+			std::cout << "dtor"<<x<< std::endl;
 			delete s;
 		}
 		Rule5& operator=(const Rule5& copy) {
@@ -57,7 +57,7 @@ namespace Rules {
 			std::cout << "move_ctor" << *s << std::endl;
 		}
 		~RuleFourAndHalf() {
-			std::cout << "dtor" << *s << std::endl;
+			std::cout << "dtor" << std::endl;
 			delete s;
 		}
 		RuleFourAndHalf& operator=(RuleFourAndHalf copy) {
@@ -90,7 +90,7 @@ namespace Rules {
 			std::cout << "move_ctor" << *s << std::endl;
 		}
 		~Rule3() {
-			std::cout << "dtor" << *s << std::endl;
+			std::cout << "dtor" << std::endl;
 			delete s;
 		}
 	};
@@ -114,15 +114,17 @@ namespace Rules {
 		~Rule0b() = default;
 	};
 
-	static void DoExample() {
+	static void doExample() {
 		{
 			Rule5* x1 = new Rule5(new int(1));//standard ctor
 			Rule5 x2(new int(2));//standard ctor
 			Rule5 x3 = Rule5(new int(2));//copy elision
 			Rule5 x4copy = Rule5(x2);//copy ctor
 			Rule5 x5move = Rule5(std::move(x2));//move ctor
-			Rule5 x10 = x3;//copy oper
-			Rule5 x20 = std::move(x3);//move oper
+			Rule5 x10(nullptr);
+			Rule5 x20(nullptr);
+			x10 = x3;//copy oper
+			x20 = std::move(x3);//move oper
 			delete x1;
 		}
 		Rule0a* o1 = new Rule0a(new int(1));

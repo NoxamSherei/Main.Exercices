@@ -7,7 +7,7 @@
 /// Checks if there are no securities or users with empty orders.
 /// Function mainly for testing
 /// </summary>
-const bool OrderCacheImpl::noEmptySecurityAndUser() const {
+const bool OrderCacheImpl::NoEmptySecurityAndUser() const {
 	for (const auto& sec : m_securitiesOrders_buySell) {
 		if (sec.second.first.empty() && sec.second.second.empty())
 			return false;
@@ -20,43 +20,43 @@ const bool OrderCacheImpl::noEmptySecurityAndUser() const {
 }
 
 // Checks if an order does not exist in the order cache by its ID.
-inline const bool OrderCacheImpl::orderNotExist(const std::string& orderId) const
+inline const bool OrderCacheImpl::OrderNotExist(const std::string& orderId) const
 {
 	return m_ordersByOrderId.find(orderId) == m_ordersByOrderId.end();
 }
 
 // Checks if an order has the correct format (i.e., quantity is not zero and side is either "Buy" or "Sell").
-inline const bool OrderCacheImpl::orderHasCorrectFormat(const Order& order) const
+inline const bool OrderCacheImpl::OrderHasCorrectFormat(const Order& order) const
 {
-	return order.qty() == 0 || !(order.side() == "Buy" || order.side() == "Sell");
+	return order.Qty() == 0 || !(order.Side() == "Buy" || order.Side() == "Sell");
 }
 
 // Checks if a user does not exist in the user orders map by their user name.
-inline const bool OrderCacheImpl::userNotExist(const std::string& userName) const
+inline const bool OrderCacheImpl::UserNotExist(const std::string& userName) const
 {
 	return m_usersOrders.find(userName) == m_usersOrders.end();
 }
 
 // Checks if a security ID does not exist in the securities orders map.
-inline const bool OrderCacheImpl::securityIDNotExist(const std::string& securityId) const
+inline const bool OrderCacheImpl::SecurityIDNotExist(const std::string& securityId) const
 {
 	return m_securitiesOrders_buySell.find(securityId) == m_securitiesOrders_buySell.end();
 }
 
 
-void OrderCacheImpl::addOrder(Order order) {
-	const std::string& orderId = order.orderId();
-	const std::string& securityId = order.securityId();
-	const std::string& userId = order.user();
-	const bool isBuy = order.side() == "Buy";
+void OrderCacheImpl::AddOrder(Order order) {
+	const std::string& orderId = order.OrderId();
+	const std::string& securityId = order.SecurityId();
+	const std::string& userId = order.User();
+	const bool isBuy = order.Side() == "Buy";
 	std::lock_guard<std::mutex> guard(m_mutex);
 
 	// If the order already exists or has an incorrect format, do nothing.
-	if (!orderNotExist(orderId)) {
+	if (!OrderNotExist(orderId)) {
 		return;
 	}
 
-	if (orderHasCorrectFormat(order)) {
+	if (OrderHasCorrectFormat(order)) {
 		return;
 	}
 
@@ -73,19 +73,19 @@ void OrderCacheImpl::addOrder(Order order) {
 	}
 }
 
-void OrderCacheImpl::cancelOrder(const std::string& orderId) {
+void OrderCacheImpl::CancelOrder(const std::string& orderId) {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	// If the order doesn't exist, do nothing.
-	if (orderNotExist(orderId)) {
+	if (OrderNotExist(orderId)) {
 		return;
 	}
 	// Remove the order from the cache.
-	removeTargetedFromCashe(orderId);
+	RemoveTargetedFromCashe(orderId);
 }
 
-void OrderCacheImpl::cancelOrdersForUser(const std::string& user) {
+void OrderCacheImpl::CancelOrdersForUser(const std::string& user) {
 	std::lock_guard<std::mutex> guard(m_mutex);
-	if (userNotExist(user)) {
+	if (UserNotExist(user)) {
 		return;
 	}
 	std::vector<std::string> ordersToRemove;
@@ -94,13 +94,13 @@ void OrderCacheImpl::cancelOrdersForUser(const std::string& user) {
 		[](const std::pair<std::string, OrderPtr> pair) { return pair.first; });
 
 	// Remove the targeted orders from the cache.
-	removeTargetedFromCashe(ordersToRemove);
+	RemoveTargetedFromCashe(ordersToRemove);
 }
 
-void OrderCacheImpl::cancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty) {
+void OrderCacheImpl::CancelOrdersForSecIdWithMinimumQty(const std::string& securityId, unsigned int minQty) {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	// If the security ID doesn't exist, do nothing.
-	if (securityIDNotExist(securityId)) {
+	if (SecurityIDNotExist(securityId)) {
 		return;
 	}
 
@@ -108,24 +108,24 @@ void OrderCacheImpl::cancelOrdersForSecIdWithMinimumQty(const std::string& secur
 		
 	// Collect orders from the buy side that meet the minimum quantity requirement.
 	for (const auto& [orderId, orders] : m_securitiesOrders_buySell[securityId].first) {
-		if (orders->qty() >= minQty) {
-			ordersToRemove.push_back(orders->orderId());
+		if (orders->Qty() >= minQty) {
+			ordersToRemove.push_back(orders->OrderId());
 		}
 	}
 	// Collect orders from the sell side that meet the minimum quantity requirement.
 	for (const auto& [orderId, orders] : m_securitiesOrders_buySell[securityId].second) {
-		if (orders->qty() >= minQty) {
-			ordersToRemove.push_back(orders->orderId());
+		if (orders->Qty() >= minQty) {
+			ordersToRemove.push_back(orders->OrderId());
 		}
 	}
 	// Remove the targeted orders from the cache.
-	removeTargetedFromCashe(ordersToRemove);
+	RemoveTargetedFromCashe(ordersToRemove);
 }
 
-unsigned int OrderCacheImpl::getMatchingSizeForSecurity(const std::string& securityId) {
+unsigned int OrderCacheImpl::GetMatchingSizeForSecurity(const std::string& securityId) {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	// If the security ID doesn't exist, return 0.
-	if (securityIDNotExist(securityId)) {
+	if (SecurityIDNotExist(securityId)) {
 		return 0;
 	}
 	const auto& [buys, sells] = m_securitiesOrders_buySell[securityId];
@@ -135,11 +135,11 @@ unsigned int OrderCacheImpl::getMatchingSizeForSecurity(const std::string& secur
 
 	// Accumulate the quantities for buy orders by company.
 	for (const auto& [id, order] : buys) {
-		buyOrders[order->company()] += order->qty();
+		buyOrders[order->Company()] += order->Qty();
 	}
 	// Accumulate the quantities for sell orders by company.
 	for (const auto& [id, order] : sells) {
-		sellOrders[order->company()] += order->qty();
+		sellOrders[order->Company()] += order->Qty();
 	}
 
 	unsigned int totalMatch = 0;
@@ -160,7 +160,7 @@ unsigned int OrderCacheImpl::getMatchingSizeForSecurity(const std::string& secur
 	return totalMatch;
 }
 
-std::vector<Order> OrderCacheImpl::getAllOrders() const {
+std::vector<Order> OrderCacheImpl::GetAllOrders() const {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	std::vector<Order> allOrders;
 	// Copy all orders from the cache to the allOrders vector.
@@ -174,10 +174,10 @@ std::vector<Order> OrderCacheImpl::getAllOrders() const {
 /// Removes a single order from the cache by its order ID.
 /// </summary>
 /// <param name="orderId">The ID of the order to remove.</param>
-void OrderCacheImpl::removeOrderFromCashe(const std::string& orderId) {
+void OrderCacheImpl::RemoveOrderFromCashe(const std::string& orderId) {
 	const Order& order = *(m_ordersByOrderId[orderId].get());
-	const std::string& securityId = order.securityId();
-	const std::string& userId = order.user();
+	const std::string& securityId = order.SecurityId();
+	const std::string& userId = order.User();
 
 	// Remove the order from the user's order map.
 	// If the user has no more orders, remove the user from the map.
